@@ -1,0 +1,13 @@
+.metadata
+.settings/
+.loadpath
+
+# Eclipse Core
+.project
+
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+# Maven
+log/
+target/
