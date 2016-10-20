@@ -14,6 +14,6 @@ public class BeerController {
 
 	@RequestMapping(value = "/beerForm", method = RequestMethod.POST)
 	public String beerFormPost(@ModelAttribute("beerData") Beer beer, Model model) {
-		return "";
+		return "result";
 	}
 }
