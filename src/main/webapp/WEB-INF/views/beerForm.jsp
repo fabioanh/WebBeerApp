@@ -16,9 +16,9 @@
 	<form action="/beer-app/BeerForm" method="POST" focus="color">
 
 		<select>
-			<option value="Amber">Amber</option>
-			<option value="Brown">Brown</option>
-			<option value="Blonde">Blonde</option>
+			<option value="amber">Amber</option>
+			<option value="bruin">Bruin</option>
+			<option value="blond">Blond</option>
 
 		</select> <br /> <br />
 
