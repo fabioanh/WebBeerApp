@@ -2,6 +2,7 @@ package com.adneom.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.adneom.data.Beer;
 
@@ -20,6 +21,12 @@ public class BeerServiceImpl implements BeerService {
 		beers.add(new Beer("Montagnarde", "Brasserie de l'Abbaye des Rocs", "amber"));
 		beers.add(new Beer("Hoftrol", "'t Hofbrouwerijke", "amber"));
 		return beers;
+	}
+
+	@Override
+	public List<Beer> findByType(String type) {
+		return findAll().stream().filter(b -> b.getType().equals(type))
+				.collect(Collectors.toList());
 	}
 
 }

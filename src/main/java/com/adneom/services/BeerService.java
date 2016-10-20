@@ -12,4 +12,13 @@ public interface BeerService {
 	 * @return
 	 */
 	List<Beer> findAll();
+
+	/**
+	 * Returns the list of beers of the system filtered by type
+	 * 
+	 * @param type
+	 * @return
+	 */
+	List<Beer> findByType(String type);
+
 }
