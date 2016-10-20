@@ -12,8 +12,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Class<?>[] { WebConfiguration.class };
 	}
 
 	@Override
