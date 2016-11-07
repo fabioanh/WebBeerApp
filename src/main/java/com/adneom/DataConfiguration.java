@@ -55,15 +55,6 @@ public class DataConfiguration {
 		return emfb;
 	}
 
-	// @Bean
-	// public LocalSessionFactoryBean sessionFactory() {
-	// LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-	// sessionFactory.setDataSource(dataSource());
-	// sessionFactory.setPackagesToScan(new String[] { "com.adneom.data" });
-	// sessionFactory.setHibernateProperties(hibernateProperties());
-	// return sessionFactory;
-	// }
-
 	private Properties hibernateProperties() {
 		Properties properties = new Properties();
 		properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
