@@ -6,6 +6,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -16,6 +18,11 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "beer")
+//@formatter:off
+@NamedQueries({
+	@NamedQuery(name="beer.findAll", query="SELECT b FROM Beer b")
+})
+//@formatter:on
 public class Beer {
 
 	@Id
