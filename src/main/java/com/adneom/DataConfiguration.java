@@ -3,9 +3,9 @@ package com.adneom;
 import java.util.Properties;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,8 +16,11 @@ import org.springframework.dao.annotation.PersistenceExceptionTranslationPostPro
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
@@ -39,13 +42,27 @@ public class DataConfiguration {
 	}
 
 	@Bean
-	public LocalSessionFactoryBean sessionFactory() {
-		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-		sessionFactory.setDataSource(dataSource());
-		sessionFactory.setPackagesToScan(new String[] { "com.adneom.data" });
-		sessionFactory.setHibernateProperties(hibernateProperties());
-		return sessionFactory;
+	public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
+		LocalContainerEntityManagerFactoryBean emfb = new LocalContainerEntityManagerFactoryBean();
+		emfb.setDataSource(dataSource());
+		emfb.setPackagesToScan(new String[] { "com.adneom.data" });
+
+		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+		emfb.setJpaVendorAdapter(vendorAdapter);
+
+		emfb.setJpaProperties(hibernateProperties());
+
+		return emfb;
 	}
+
+	// @Bean
+	// public LocalSessionFactoryBean sessionFactory() {
+	// LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+	// sessionFactory.setDataSource(dataSource());
+	// sessionFactory.setPackagesToScan(new String[] { "com.adneom.data" });
+	// sessionFactory.setHibernateProperties(hibernateProperties());
+	// return sessionFactory;
+	// }
 
 	private Properties hibernateProperties() {
 		Properties properties = new Properties();
@@ -56,13 +73,13 @@ public class DataConfiguration {
 	}
 
 	@Bean
-	@Inject
-	public HibernateTransactionManager transactionManager(SessionFactory s) {
-		HibernateTransactionManager txManager = new HibernateTransactionManager();
-		txManager.setSessionFactory(s);
-		return txManager;
+	public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
+		JpaTransactionManager transactionManager = new JpaTransactionManager();
+		transactionManager.setEntityManagerFactory(emf);
+
+		return transactionManager;
 	}
-	
+
 	@Bean
 	public BeanPostProcessor persistenceTranslation() {
 		return new PersistenceExceptionTranslationPostProcessor();

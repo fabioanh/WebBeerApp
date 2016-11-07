@@ -1,5 +1,9 @@
 package com.adneom.repositories;
 
-public interface BreweryRepository {
+import java.util.List;
 
+import com.adneom.data.Brewery;
+
+public interface BreweryRepository {
+	List<Brewery> findAll();
 }
