@@ -29,7 +29,7 @@ public class Beer {
 	private Integer id;
 	@Column
 	private String name;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "brewery_id", nullable = false)
 	private Brewery brewery;
 	@Column

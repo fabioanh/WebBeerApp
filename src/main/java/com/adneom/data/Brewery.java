@@ -11,6 +11,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * 
  * @author fnavarretehiguera
@@ -33,7 +35,8 @@ public class Brewery {
 	@Column(name = "address")
 	private String address;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "brewery")
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "brewery")
 	private List<Beer> beers;
 
 	public Integer getId() {
