@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Table(name = "beer")
 //@formatter:off
 @NamedQueries({
-	@NamedQuery(name="beer.findAll", query="SELECT b FROM Beer b")
+	@NamedQuery(name="Beer.findAll", query="SELECT b FROM Beer b")
 })
 //@formatter:on
 public class Beer {
