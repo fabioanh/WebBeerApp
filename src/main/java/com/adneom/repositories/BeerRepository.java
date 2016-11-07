@@ -7,4 +7,5 @@ import com.adneom.data.Beer;
 public interface BeerRepository {
 
 	List<Beer> findAll();
+
 }
