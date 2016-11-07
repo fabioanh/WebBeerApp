@@ -19,3 +19,7 @@ INSERT INTO beer(id,name,brewery_id, type, alcohol_content) VALUES (6,'Potteloer
 INSERT INTO beer(id,name,brewery_id, type, alcohol_content) VALUES (7,'Stropken', 7, 'amber', 8.2);
 INSERT INTO beer(id,name,brewery_id, type, alcohol_content) VALUES (8,'Montagnarde', 8, 'amber', 9.5);
 INSERT INTO beer(id,name,brewery_id, type, alcohol_content) VALUES (9,'Hoftrol', 9, 'amber', 4.8);
+INSERT INTO beer(id,name,brewery_id, type, alcohol_content) VALUES (10,'Maredsous blond', 5, 'blond', 6.0);
+INSERT INTO beer(id,name,brewery_id, type, alcohol_content) VALUES (11,'Steendonk', 5, 'witbier', 4.5);
+INSERT INTO beer(id,name,brewery_id, type, alcohol_content) VALUES (12,'Vedett Extra White', 5, 'witbier', 4.7);
+INSERT INTO beer(id,name,brewery_id, type, alcohol_content) VALUES (13,'Blanche des Honnelles', 5, 'witbier', 6.0);
