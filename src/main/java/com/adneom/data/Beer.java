@@ -1,16 +1,34 @@
 package com.adneom.data;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  * Represents the concept of a beer inside the system
  * 
  * @author fakefla
  *
  */
+@Entity
+@Table(name = "beer")
 public class Beer {
 
+	@Id
+	private Integer id;
+	@Column
 	private String name;
-	private String brewery;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "brewery_id", nullable = false)
+	private Brewery brewery;
+	@Column
 	private String type;
+	@Column(name = "alcohol_content")
+	private Double alcoholContent;
 
 	public Beer() {
 	}
@@ -18,7 +36,7 @@ public class Beer {
 	public Beer(String name, String brewery, String type) {
 		super();
 		this.name = name;
-		this.brewery = brewery;
+		// this.brewery = brewery;
 		this.type = type;
 	}
 
@@ -30,11 +48,11 @@ public class Beer {
 		this.name = name;
 	}
 
-	public String getBrewery() {
+	public Brewery getBrewery() {
 		return brewery;
 	}
 
-	public void setBrewery(String brewery) {
+	public void setBrewery(Brewery brewery) {
 		this.brewery = brewery;
 	}
 

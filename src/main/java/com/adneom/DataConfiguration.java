@@ -2,10 +2,10 @@ package com.adneom;
 
 import java.util.Properties;
 
+import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(basePackages = { "com.adneom.data" })
 public class DataConfiguration {
 
-	@Autowired
+	@Inject
 	private Environment environment;
 
 	@Bean
@@ -54,7 +54,7 @@ public class DataConfiguration {
 	}
 
 	@Bean
-	@Autowired
+	@Inject
 	public HibernateTransactionManager transactionManager(SessionFactory s) {
 		HibernateTransactionManager txManager = new HibernateTransactionManager();
 		txManager.setSessionFactory(s);
