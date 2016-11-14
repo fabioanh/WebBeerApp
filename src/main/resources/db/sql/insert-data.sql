@@ -23,3 +23,10 @@ INSERT INTO beer(id,name,brewery_id, type, alcohol_content) VALUES (10,'Maredsou
 INSERT INTO beer(id,name,brewery_id, type, alcohol_content) VALUES (11,'Steendonk', 5, 'witbier', 4.5);
 INSERT INTO beer(id,name,brewery_id, type, alcohol_content) VALUES (12,'Vedett Extra White', 5, 'witbier', 4.7);
 INSERT INTO beer(id,name,brewery_id, type, alcohol_content) VALUES (13,'Blanche des Honnelles', 5, 'witbier', 6.0);
+
+--Insert data into users schema
+INSERT INTO users(username, password, enabled) VALUES ('user','user',true);
+INSERT INTO users(username, password, enabled) VALUES ('admin','admin',true);
+
+INSERT INTO authorities(username, authority) VALUES ('user','ROLE_USER');
+INSERT INTO authorities(username, authority) VALUES ('admin','ROLE_ADMIN');
